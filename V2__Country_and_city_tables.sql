@@ -1,0 +1,16 @@
+CREATE TABLE Cities (
+    zipcode VARCHAR(10) PRIMARY KEY NOT NULL,
+    `Name` VARCHAR(50) NOT NULL,
+);
+
+CREATE TABLE Contries (
+    `Name` VARCHAR(50) NOT NULL,
+    `Code` VARCHAR(10) PRIMARY KEY NOT NULL,
+);
+
+ALTER TABLE Contacts ADD CountryCode VARCHAR(3) NOT NULL;
+ALTER TABLE Contacts DROP COLUMN City;
+ALTER TABLE Contacts DROP COLUMN Country;
+
+ALTER TABLE Contacts ADD FOREIGN KEY (zip) REFERENCES Cities(zipcode);
+ALTER TABLE Contacts ADD FOREIGN KEY (CountryCode) REFERENCES Contries(Code);
